@@ -6,11 +6,16 @@ import "@fontsource/merriweather";
 function App() {
 
   return (
-    <p>
+    <Header>
       <img src={logo} className="logo" alt="logo" />
-      Helo world
-    </p>
+      <form><input placeholder="Search books"></input></form>
+    </Header>
   );
 }
+
+const Header = styled.div` 
+  display: flex;
+  justify-content: space-evenly;
+`;
 
 export default App;
