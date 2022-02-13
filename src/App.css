@@ -4,4 +4,9 @@ img {
 
 body {
     font-family: "Merriweather";
+    margin: 0;
+}
+
+input {
+    width: 15em;
 }
