@@ -3,29 +3,46 @@ import styled from 'styled-components';
 import logo from './logo.png';
 import "@fontsource/merriweather";
 import "@fontsource/lato";
+import { useState } from 'react';
 
 
 function App() {
+  function signIn(e) {
+    e.preventDefault();
+  }
+
+  const [signupmode, setSignupmode] = useState(true);
+
 
   return (
     <>
       <Header>
         <img src={logo} className="logo" alt="logo" />
       </Header>
-      <SignIn>
+      {signupmode ? <SignIn>
         Sign in to Myreads
-        <Form>
+        <Form onSubmit={signIn}>
           Email address
           <Input type="text" placeholder="you@yours.com"></Input>
           Password
           <Input type="text"></Input>
         </Form>
         <Button>Sign in</Button>
-        <SignUp>
+        <Register>
           Not a member?
-          <SignUpBtn>Sign up</SignUpBtn>
-        </SignUp>
+          <SignUpBtn onClick={() => setSignupmode(false)}>Sign up</SignUpBtn>
+        </Register>
       </SignIn>
+        : <SignUp>
+          Sign up for Myreads
+          <Form onSubmit={signIn}>
+            Email address
+            <Input type="text" placeholder="you@yours.com"></Input>
+            Password
+            <Input type="text"></Input>
+          </Form>
+          <Button>Sign up</Button>
+        </SignUp>}
     </>
   );
 }
@@ -42,9 +59,11 @@ const SignIn = styled.div`
   display: flex;
   height: 60vh;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 2em;
+`;
+
+const SignUp = styled(SignIn)`
 `;
 
 const Form = styled.form`
@@ -71,9 +90,13 @@ const Button = styled.button`
   font-size: 14px;
   border-radius: 3px;
   font-family: "Lato", sans-serif;
+  &:hover {
+    background-color: #EDE6D6;
+    cursor: pointer;
+  }
 `;
 
-const SignUp = styled.div`
+const Register = styled.div`
   font-size: 12px;
   font-family: "Lato", sans-serif;
 `;
@@ -85,6 +108,10 @@ const SignUpBtn = styled.button`
   font-family: "Lato", sans-serif;
   font-size: 12px;
   color: #00635D;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 `;
 
 export default App;
