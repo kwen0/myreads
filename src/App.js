@@ -20,7 +20,7 @@ function App() {
   const [newEmail, setNewEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
 
-  const handleSignupmode = () => setSignupmode(false);
+  const handleSignupmode = () => setSignupmode(!signupmode);
 
 
   return (
@@ -28,30 +28,32 @@ function App() {
       <Header>
         <img src={logo} className="logo" alt="logo" />
       </Header>
-      {signupmode ? <SignIn>
-        Sign in to Myreads
-        <Form onSubmit={signIn}>
-          Email address
-          <Input
-            type="text"
-            placeholder="you@yours.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          Password
-          <Input
-            type="text"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form>
-        <Button>Sign in</Button>
-        <Register>
-          Not a member?
-          <SignUpBtn onClick={handleSignupmode}>Sign up</SignUpBtn>
-        </Register>
-      </SignIn>
-        : <SignUp>
+      {signupmode ?
+        <SignIn>
+          Sign in to Myreads
+          <Form onSubmit={signIn}>
+            Email address
+            <Input
+              type="text"
+              placeholder="you@yours.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            Password
+            <Input
+              type="text"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form>
+          <Button>Sign in</Button>
+          <Register>
+            Not a member?
+            <SignUpBtn onClick={handleSignupmode}>Sign up</SignUpBtn>
+          </Register>
+        </SignIn>
+        :
+        <SignUp>
           Sign up for Myreads
           <Form>
             Name
@@ -75,7 +77,9 @@ function App() {
             />
           </Form>
           <Button>Sign up</Button>
-        </SignUp>}
+          <Back onClick={handleSignupmode}>Back</Back>
+        </SignUp>
+      }
     </>
   );
 }
@@ -145,6 +149,9 @@ const SignUpBtn = styled.button`
     text-decoration: underline;
     cursor: pointer;
   }
+`;
+
+const Back = styled(SignUpBtn)`
 `;
 
 export default App;
