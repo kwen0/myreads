@@ -4,6 +4,7 @@ import logo from './logo.png';
 import "@fontsource/merriweather";
 import "@fontsource/lato";
 import { useState } from 'react';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 
 function App() {
@@ -12,6 +13,14 @@ function App() {
   }
 
   const [signupmode, setSignupmode] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [name, setName] = useState('')
+  const [newEmail, setNewEmail] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+
+  const handleSignupmode = () => setSignupmode(false);
 
 
   return (
@@ -23,23 +32,47 @@ function App() {
         Sign in to Myreads
         <Form onSubmit={signIn}>
           Email address
-          <Input type="text" placeholder="you@yours.com"></Input>
+          <Input
+            type="text"
+            placeholder="you@yours.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           Password
-          <Input type="text"></Input>
+          <Input
+            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </Form>
         <Button>Sign in</Button>
         <Register>
           Not a member?
-          <SignUpBtn onClick={() => setSignupmode(false)}>Sign up</SignUpBtn>
+          <SignUpBtn onClick={handleSignupmode}>Sign up</SignUpBtn>
         </Register>
       </SignIn>
         : <SignUp>
           Sign up for Myreads
-          <Form onSubmit={signIn}>
+          <Form>
+            Name
+            <Input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
             Email address
-            <Input type="text" placeholder="you@yours.com"></Input>
+            <Input
+              type="text"
+              placeholder="you@yours.com"
+              value={newEmail}
+              onChange={(e) => setNewEmail(e.target.value)}
+            />
             Password
-            <Input type="text"></Input>
+            <Input
+              type="text"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+            />
           </Form>
           <Button>Sign up</Button>
         </SignUp>}
