@@ -1,11 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./App";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Home from "./components/Home";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
+import { useAuth } from "./context/AuthContext";
 
 const RouteSwitch = () => {
+    const { currentUser } = useAuth();
+
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<App />} />
+                <Route path='/' element={currentUser ? <Home /> : <Navigate to={"/signin"} />} />
+                <Route path='/signin' element={!currentUser ? <SignIn /> : <Navigate to={"/"} />} />
+                <Route path='/signup' element={!currentUser ? <SignUp /> : <Navigate to={"/"} />} />
             </Routes>
         </BrowserRouter>
     );
