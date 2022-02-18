@@ -106,15 +106,20 @@ const Title = styled.div`
 const Form = styled.form`
     background-color: rgb(238,238,238);
     display: flex;
+    justify-content: center;
     padding: 1em;
     gap: 0.5em;
+    width: 48vw;
     margin-bottom: 1em;
     border-radius: 5px;
+    @media only screen and (max-width: 600px) {
+        width: 15em;
+    }
 `;
 
 const Input = styled.input`
     font-family: "Lato", sans-serif;
-    width: 25em;
+    width: 45em;
     height: 1em;
     padding: 0.5em;
     border-radius: 3px;

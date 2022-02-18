@@ -5,11 +5,14 @@ import RouteSwitch from './RouteSwitch';
 import { AuthProvider } from './context/AuthContext';
 import "@fontsource/merriweather";
 import "@fontsource/lato";
+import { ModalProvider } from 'styled-react-modal'
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <RouteSwitch />
+      <ModalProvider>
+        <RouteSwitch />
+      </ModalProvider>
     </AuthProvider >
   </React.StrictMode>,
 
