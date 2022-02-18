@@ -12,30 +12,42 @@ function Search() {
         e.preventDefault();
         setLoading(true)
         try {
-            const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&key=AIzaSyA-X5yCIhkEn70GfQhittAlUznwetUkIkc`)
+            const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}`)
             const data = await response.json()
-            setCards(data.items)
-            setLoading(false)
+            if (data.items.length > 0) {
+                setCards(data.items)
+                setLoading(false)
+            }
         } catch (err) {
             setLoading(true)
-            console.log(err.response)
+            console.log(err)
         }
     }
 
     const handleCards = () => {
         if (loading) {
-            return;
+            return <div>Fetching results...</div>;
         } else {
             const items = cards.map((item, i) => {
+                let thumbnail = '';
+                if (item.volumeInfo.imageLinks) {
+                    thumbnail = item.volumeInfo.imageLinks.thumbnail;
+                }
+
+                let authors = [];
+                if (item.volumeInfo.authors) {
+                    authors = item.volumeInfo.authors;
+                }
+
                 return (
                     <div key={item.id}>
                         <BookCard
                             id={item.id}
-                            thumbnail={item.volumeInfo.imageLinks.thumbnail}
+                            thumbnail={thumbnail}
                             title={item.volumeInfo.title}
                             categories={item.volumeInfo.categories}
                             pageCount={item.volumeInfo.pageCount}
-                            authors={item.volumeInfo.authors}
+                            authors={authors}
                             publisher={item.volumeInfo.publisher}
                             description={item.volumeInfo.description}
                             infoLink={item.volumeInfo.infoLink}
