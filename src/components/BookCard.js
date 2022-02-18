@@ -41,10 +41,10 @@ function BookCard(props) {
                 isOpen={isOpen}
                 onBackgroundClick={toggleModal}
                 onEscapeKeydown={toggleModal}>
-                <ModalPic>
+                <ModalLeft>
                     <ModalThumbnail src={thumbnail}></ModalThumbnail>
                     <WantToRead>Want to Read</WantToRead>
-                </ModalPic>
+                </ModalLeft>
                 <ModalInfo>
                     <ModalTitle>{title}</ModalTitle>
                     <ModalAuthors>by {formattedAuthors(authors)}</ModalAuthors>
@@ -173,9 +173,11 @@ const ModalThumbnail = styled.img`
     }
 `;
 
-const ModalPic = styled.div`
+const ModalLeft = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 1em;
 `;
 
