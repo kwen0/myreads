@@ -89,7 +89,7 @@ const Form = styled.form`
 const Input = styled.input`
       padding: none;
       margin: none;
-      width: 10m;
+      width: 12em;
       height: 2em;
       font-family: "Lato", sans-serif;
       `;

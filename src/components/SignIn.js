@@ -77,6 +77,9 @@ const Header = styled.div`
       background-color: rgb(244,241,234);
       align-items: center;
       padding: 0.5em;
+      img {
+        height: 40px;
+      }
       `;
 
 const StyledSignIn = styled.div`
@@ -99,7 +102,7 @@ const Form = styled.form`
 const Input = styled.input`
       padding: none;
       margin: none;
-      width: 10m;
+      width: 12em;
       height: 2em;
       font-family: "Lato", sans-serif;
       `;
@@ -131,6 +134,7 @@ const Register = styled.div`
 
 const SignUpBtn = styled.button`
       background: transparent;
+      margin-top: 0.5em;
       border: none;
       font-family: "Lato", sans-serif;
       font-size: 12px;
