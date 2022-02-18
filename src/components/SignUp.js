@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-
 function SignUp() {
     const { signup } = useAuth();
 
@@ -106,7 +105,7 @@ const Button = styled.button`
       font-family: "Lato", sans-serif;
       align-self: center;
       &:hover {
-        background - color: #EDE6D6;
+        background-color: #EDE6D6;
       cursor: pointer;
   }
       `;
@@ -118,7 +117,7 @@ const Back = styled.button`
       font-size: 12px;
       color: #00635D;
       &:hover {
-        text - decoration: underline;
+        text-decoration: underline;
       cursor: pointer;
   }
       `;

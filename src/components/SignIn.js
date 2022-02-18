@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function SignIn() {
 
-    const { signin } = useAuth();
+    const { signin, guestsignin } = useAuth();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,6 +18,15 @@ function SignIn() {
                 email,
                 password
             )
+        } catch (error) {
+            console.log(error.message)
+            alert("Invalid email or password")
+        }
+    }
+
+    const handleGuestSignIn = async (e) => {
+        try {
+            await guestsignin()
         } catch (error) {
             console.log(error.message)
             alert("Invalid email or password")
@@ -48,8 +57,12 @@ function SignIn() {
                     <Button type="submit">Sign in</Button>
                 </Form>
                 <Register>
-                    Not a member?
-                    <Link to="/signup"><SignUpBtn>Sign up</SignUpBtn></Link>
+                    <div>Not a member?</div>
+                    <div>
+                        <Link to="/signup"><SignUpBtn>Sign up</SignUpBtn></Link>
+                        or
+                        <SignUpBtn onClick={handleGuestSignIn}>sign in as a guest</SignUpBtn>
+                    </div>
                 </Register>
             </StyledSignIn>
         </>
@@ -102,12 +115,16 @@ const Button = styled.button`
       font-family: "Lato", sans-serif;
       align-self: center;
       &:hover {
-        background - color: #EDE6D6;
+        background-color: #EDE6D6;
       cursor: pointer;
   }
       `;
 
 const Register = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
       font-size: 12px;
       font-family: "Lato", sans-serif;
       `;
@@ -119,7 +136,7 @@ const SignUpBtn = styled.button`
       font-size: 12px;
       color: #00635D;
       &:hover {
-        text - decoration: underline;
+        text-decoration: underline;
       cursor: pointer;
   }
       `;

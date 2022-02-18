@@ -2,6 +2,7 @@ import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
     signInWithEmailAndPassword,
+    signInAnonymously,
     signOut,
 } from "firebase/auth";
 import React, { useContext, useState, useEffect } from "react";
@@ -25,6 +26,10 @@ export function AuthProvider({ children }) {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
+    function guestsignin() {
+        return signInAnonymously(auth)
+    }
+
     function logout() {
         return signOut(auth);
     }
@@ -40,6 +45,7 @@ export function AuthProvider({ children }) {
 
     const value = {
         currentUser,
+        guestsignin,
         signin,
         signup,
         logout,

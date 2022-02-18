@@ -1,19 +1,15 @@
-import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import Header from "./Header"
 
-
-function Home(props) {
-    const { logout } = useAuth();
-
-    const handleLogOut = async () => {
-        await logout();
-    };
+function Home() {
+    // fetch(`https://www.googleapis.com/books/v1/volumes?q=search-terms&key=AIzaSyA-X5yCIhkEn70GfQhittAlUznwetUkIkc`
+    // )
+    //     .then(response => console.log(response.json()))
+    //     .then(result => {
+    //         this.setState({ books: result.items })
+    //     })
 
     return (
-        <div>
-            HELLO
-            <Link to="/"><button onClick={handleLogOut}> Sign Out </button></Link>
-        </div>
+        <Header />
     )
 }
 
