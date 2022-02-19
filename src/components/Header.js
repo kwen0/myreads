@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 function Header() {
-    const { logout } = useAuth();
-    const { currentUser } = useAuth();
+    const { logOut } = useAuth();
 
     const handleLogOut = async () => {
-        await logout();
+        await logOut();
     };
 
     return (

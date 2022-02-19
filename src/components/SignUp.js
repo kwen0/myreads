@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 function SignUp() {
-    const { signup } = useAuth();
+    const { register } = useAuth();
 
     const [newEmail, setNewEmail] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -17,7 +17,7 @@ function SignUp() {
             return
         }
         try {
-            await signup(
+            await register(
                 newEmail,
                 newPassword
             )

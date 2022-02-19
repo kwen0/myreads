@@ -1,5 +1,7 @@
 import {
     createUserWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signInAnonymously,
@@ -18,19 +20,24 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true);
 
-    function signup(email, password) {
+    const provider = new GoogleAuthProvider();
+    function googleSignIn() {
+        return signInWithPopup(auth, provider);
+    }
+
+    function register(email, password) {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    function signin(email, password) {
+    function signIn(email, password) {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    function guestsignin() {
+    function guestSignIn() {
         return signInAnonymously(auth)
     }
 
-    function logout() {
+    function logOut() {
         return signOut(auth);
     }
 
@@ -45,10 +52,11 @@ export function AuthProvider({ children }) {
 
     const value = {
         currentUser,
-        guestsignin,
-        signin,
-        signup,
-        logout,
+        guestSignIn,
+        googleSignIn,
+        signIn,
+        register,
+        logOut,
     };
 
     return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;

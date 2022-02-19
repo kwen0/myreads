@@ -3,10 +3,10 @@ import logo from './assets/logo.png';
 import { useState } from 'react';
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import google from './assets/google.png';
 
 function SignIn() {
-
-    const { signin, guestsignin } = useAuth();
+    const { signIn, guestSignIn, googleSignIn } = useAuth();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -14,7 +14,7 @@ function SignIn() {
     const handleSignIn = async (e) => {
         e.preventDefault();
         try {
-            await signin(
+            await signIn(
                 email,
                 password
             )
@@ -26,10 +26,18 @@ function SignIn() {
 
     const handleGuestSignIn = async (e) => {
         try {
-            await guestsignin()
+            await guestSignIn()
         } catch (error) {
             console.log(error.message)
             alert("Invalid email or password")
+        }
+    }
+
+    const handleGoogleSignIn = async () => {
+        try {
+            await googleSignIn()
+        } catch (error) {
+            console.log(error.message)
         }
     }
 
@@ -57,7 +65,11 @@ function SignIn() {
                     <Button type="submit">Sign in</Button>
                 </Form>
                 <Register>
-                    <div>Not a member?</div>
+                    Not a member?
+                    <Google onClick={handleGoogleSignIn}>
+                        <img src={google} alt="google" />
+                        Continue with Google
+                    </Google>
                     <div>
                         <Link to="/signup"><SignUpBtn>Sign up</SignUpBtn></Link>
                         or
@@ -102,7 +114,7 @@ const Form = styled.form`
 const Input = styled.input`
       padding: none;
       margin: none;
-      width: 12em;
+      width: 18em;
       height: 2em;
       font-family: "Lato", sans-serif;
       `;
@@ -144,3 +156,24 @@ const SignUpBtn = styled.button`
       cursor: pointer;
   }
       `;
+
+const Google = styled.button`
+  img {
+      height: 20px;
+      padding-right: 0.5em;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5em;
+  background-color: transparent;
+  border: 1px solid rgb(55,34,19);
+  padding: 1em 0em;
+  font-family: "Lato";
+  width: 18em;
+  border-radius: 3px;
+  &:hover {
+    text-decoration: underline;
+  cursor: pointer;
+}
+`;

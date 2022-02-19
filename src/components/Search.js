@@ -69,7 +69,7 @@ function Search() {
                 <Form onSubmit={handleSearch}>
                     <Input
                         type="text"
-                        placeholder="Search book by title"
+                        placeholder="Search by Book Title or Author"
                         value={searchValue}
                         onChange={(e) => setSearchValue(e.target.value)}
                     />
