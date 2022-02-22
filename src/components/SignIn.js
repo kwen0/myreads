@@ -160,11 +160,11 @@ const SignUpBtn = styled.button`
 const Google = styled.button`
   img {
       height: 20px;
-      padding-right: 0.5em;
   }
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.5em;
   margin-top: 0.5em;
   background-color: transparent;
   border: 1px solid rgb(55,34,19);
@@ -174,6 +174,6 @@ const Google = styled.button`
   border-radius: 3px;
   &:hover {
     text-decoration: underline;
-  cursor: pointer;
-}
+    cursor: pointer;
+  }
 `;

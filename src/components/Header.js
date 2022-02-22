@@ -16,7 +16,7 @@ function Header() {
                 <img src={logo} className="logo" alt="logo" />
                 <HeaderLink>Home</HeaderLink>
                 <Link to="/search"><HeaderLink>Search</HeaderLink></Link>
-                <HeaderLink>My Books</HeaderLink>
+                <Link to="/mybooks"><HeaderLink>My Books</HeaderLink></Link>
             </HeaderLeft>
             <Link to="/"><Button onClick={handleLogOut}>Sign out</Button></Link>
         </StyledHeader>
