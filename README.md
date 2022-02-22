@@ -5,7 +5,7 @@ Myreads is a Goodreads clone with functionality to search and retrieve book info
 ### Sign In Page
 <img width="700" alt="screenshot" src="./public/myreads2.png">
 
-### Seach Page
+### Search Page
 <img width="700" alt="screenshot" src="./public/myreads.png">
 
 ## Features
