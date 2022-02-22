@@ -1,14 +1,12 @@
 # 📚 Myreads
 Myreads is a Goodreads clone with functionality to search and retrieve book information
 
-[Live demo](https://kwen0.github.io/shopping-cart/)
-
 ## Screenshots
 ### Sign In Page
 <img width="700" alt="screenshot" src="./public/myreads2.png">
 
 ### Seach Page
-<img width="700" alt="screenshot" src="./public/screenshot1.png">
+<img width="700" alt="screenshot" src="./public/myreads.png">
 
 ## Features
 - Sign in with email/password, Google, or as a guest 
